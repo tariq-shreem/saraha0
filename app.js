@@ -9,13 +9,7 @@ app.use(cors())
 const indexRouter = require('./modules/index.router');
 app.use(express.json());
 const baseUrl="/api/v1";
-
-//Connect to the database before listening
-connectDB().then(() => {
-    app.listen(PORT, () => {
-        console.log("listening for requests");
-    })
-})
+connectDB();
 app.use(`${baseUrl}/upload`,express.static('./upload'));
 app.use(`${baseUrl}/auth`,indexRouter.authRouter);
 app.use(`${baseUrl}/message`,indexRouter.messageRouter);
