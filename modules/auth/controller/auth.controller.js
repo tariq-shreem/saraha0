@@ -31,7 +31,6 @@ let refreshToken=await jwt.sign({id:savedUser._id},process.env.refreshTokenEmail
             <a href="${req.protocol}://${req.headers.host}${process.env.BASEURL}/auth/rftoken/${refreshToken}">Resend verify email</a>
         `;
           let emaild= await sendEamil(email,'confirm Email',`${message} <br /> ${messageRefresh}`);
-            res.json({emaild});
           res.status(201).json({messgae:"success"});
         }
     }
