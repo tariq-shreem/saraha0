@@ -16,5 +16,6 @@ const sendEamil =async (dest,subject,message)=>{
         html: message, // html body
       });
     
+      return info;
 }
 module.exports={sendEamil}
