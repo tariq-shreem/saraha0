@@ -8,7 +8,7 @@ router.post('/signup',validation(authValidation.signup),authController.signup);
 router.get('/confirmEmail/:token',authController.confirmEmail);
 router.get('/rftoken/:token',authController.refreshtoken);
 
-router.get('/signin',validation(authValidation.signin),authController.signin)
+router.post('/signin',validation(authValidation.signin),authController.signin)
 router.get('/sendCode',authController.sendCode)
 router.get('/forgetPassword',authController.forgetPassword);
 
