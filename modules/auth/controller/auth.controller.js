@@ -31,7 +31,7 @@ let refreshToken=await jwt.sign({id:savedUser._id},process.env.refreshTokenEmail
             <a href="${req.protocol}://${req.headers.host}/${process.env.BASEURL}/auth/rftoken/${refreshToken}">Resend verify email</a>
         `;
           let emaild= await sendEamil(email,'confirm Email',`${message} <br /> ${messageRefresh}`);
-          res.status(201).json({messgae:"success"});
+          res.status(201).json({message:"success"});
         }
     }
 }catch(error){
@@ -51,7 +51,7 @@ try{
             {_id:decoded.id,confirmEmail:false},
             {confirmEmail:true}
             );
-        res.json({messgae:"your email is confirmed"});
+        res.json({message:"your email is confirmed"});
     }
  
 }catch(error){
@@ -66,7 +66,7 @@ const signin= async(req,res)=>{
         res.json({message:'invalid account'});
     }else{
         if(!user.confirmEmail){
-            res.json({messgae:"plz verify your email"});
+            res.json({message:"plz verify your email"});
         }else{ 
             const match = await bcrypt.compare(password,user.password);
             if(!match){
