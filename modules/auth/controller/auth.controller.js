@@ -63,7 +63,7 @@ const signin= async(req,res)=>{
     const {email,password} = req.body;
     const user = await userModel.findOne({email});
     if(!user){
-        res.json({message:'invalid account'});
+        res.status(500).json({message:'invalid account'});
     }else{
         if(!user.confirmEmail){
             res.json({message:"plz verify your email"});
