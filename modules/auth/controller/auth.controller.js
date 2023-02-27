@@ -66,7 +66,7 @@ const signin= async(req,res)=>{
         res.status(404).json({message:'invalid account'});
     }else{
         if(!user.confirmEmail){
-            res.json({message:"plz verify your email"});
+            res.status(403).json({message:"plz verify your email"});
         }else{ 
             const match = await bcrypt.compare(password,user.password);
             if(!match){
