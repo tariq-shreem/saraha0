@@ -73,7 +73,7 @@ const signin= async(req,res)=>{
                 res.json({message:'invalid account'});
             }else{
                 const token = jwt.sign({id:user._id},process.env.loginToken,{expiresIn:60*60*24});
-                res.json({message:'success',token,user});
+                res.json({message:'success',token});
             }
         }
     }
